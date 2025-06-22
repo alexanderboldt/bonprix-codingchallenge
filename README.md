@@ -10,5 +10,8 @@ This is Kotlin Multiplatform project to retrieve wardrobe items.
 - Kotlinx-Serialization
 - Koin
 
+### Test
+- Strikt
+
 ### Buildsystem
 - Gradle

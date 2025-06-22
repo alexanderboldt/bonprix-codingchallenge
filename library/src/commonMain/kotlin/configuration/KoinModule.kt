@@ -14,4 +14,3 @@ internal fun initializeKoin() {
         modules(apiClientModule)
     }
 }
-
