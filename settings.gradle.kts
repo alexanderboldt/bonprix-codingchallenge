@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "bonprix-codingchallenge"
 
 include(":library")
+include("app")
