@@ -17,6 +17,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Checkbox
 import androidx.compose.material.CheckboxDefaults
+import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -28,7 +29,6 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
-import initialize
 import org.challenge.repository.garment.GarmentsRepository
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -60,6 +60,8 @@ fun Content() {
 
     var garmentsResult: Result<List<Garment>> by remember { mutableStateOf(Result.success(emptyList())) }
 
+    var isSearchActive by remember { mutableStateOf(false) }
+
     Row(modifier = Modifier.fillMaxSize()) {
         // filter section
         Column(modifier = Modifier.padding(16.dp).width(250.dp).verticalScroll(rememberScrollState())) {
@@ -88,12 +90,17 @@ fun Content() {
 
             TextButton(onClick = {
                 coroutineScope.launch {
+                    isSearchActive = true
                     garmentsResult = garmentsRepository.getAllGarments(categories = categories, colors = colors)
+                    isSearchActive = false
                 }
             }, modifier = Modifier.fillMaxWidth().align(Alignment.CenterHorizontally),
+                enabled = !isSearchActive,
                 colors = ButtonDefaults.textButtonColors(red, contentColor = androidx.compose.ui.graphics.Color.White)) {
+
                 Text("Search")
             }
+            if (isSearchActive) LinearProgressIndicator(modifier = Modifier.fillMaxWidth(), color = red)
         }
         // result section
         Box(modifier = Modifier.fillMaxSize()) {

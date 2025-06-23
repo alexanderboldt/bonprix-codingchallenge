@@ -1,3 +1,5 @@
+package org.challenge
+
 import org.challenge.configuration.initializeKoin
 
 /**

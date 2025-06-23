@@ -19,7 +19,7 @@ class GarmentsRepository {
      * Otherwise, all items will be returned. The response is wrapped in a [Result]. The caller should check, if it was successful or not.
      *
      * @param categories The categories-filter as a [List] of [Category]-objects.
-     * @param colors The color-filter as a [List] of [Color]-objects.
+     * @param colors The colors-filter as a [List] of [Color]-objects.
      * @return Returns [Garment]-objects in a [List] wrapped in [Result].
      */
     suspend fun getAllGarments(categories: List<Category>? = null, colors: List<Color>? = null): Result<List<Garment>> {

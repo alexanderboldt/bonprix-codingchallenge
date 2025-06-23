@@ -1,7 +1,7 @@
 package org.challenge.repository.garment
 
-import initialize
 import kotlinx.coroutines.test.runTest
+import org.challenge.initialize
 import org.challenge.repository.garment.model.Category
 import org.challenge.repository.garment.model.Color
 import org.junit.BeforeClass
